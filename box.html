@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Предложения для Совета обучающихся</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Предложи идею мероприятия!</h1>
+  <form id="eventForm" action="https://formspree.io/f/mldqkbov" method="POST">
+    <label for="name">Имя и класс:</label>
+    <input type="text" id="name" name="name" placeholder="Иван Иванов, 9Б" required>
+
+    <label for="email">Email (необязательно, но желательно для обратной связи):</label>
+    <input type="email" id="email" name="email" placeholder="example@school.ru">
+
+    <label for="event_type">Тип мероприятия:</label>
+    <select id="event_type" name="event_type" required>
+      <option value="">— Выберите —</option>
+      <option value="творческое">Творческое (концерт, выставка)</option>
+      <option value="спортивное">Спортивное</option>
+      <option value="интеллектуальное">Интеллектуальное (викторина, олимпиада)</option>
+      <option value="благотворительное">Благотворительное</option>
+      <option value="праздник">Праздник (День учителя, Новый год и т.д.)</option>
+      <option value="другое">Другое</option>
+    </select>
+
+    <label for="idea">Ваша идея (опишите подробно):</label>
+    <textarea id="idea" name="idea" rows="5" placeholder="Например: 'Организовать школьный квест по станциям знаний...'" required></textarea>
+
+    <label for="resources">Нужны ли ресурсы? (оборудование, бюджет, помощь учителей и т.д.):</label>
+    <textarea id="resources" name="resources" rows="3" placeholder="Например: 'Нужны проектор, микрофоны и 500 ₽ на призы'"></textarea>
+
+    <button type="submit">Отправить предложение</button>
+  </form>
+
+  <div id="successMessage" class="success" style="display: none;">
+    Спасибо! Ваше предложение отправлено в Совет обучающихся.
+  </div>
+
+  <script>
+    document.getElementById('eventForm').addEventListener('submit', function() {
+      document.getElementById('successMessage').style.display = 'block';
+      document.getElementById('eventForm').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
